@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Header } from "./components";
+import { Signup, Login, Landing, CreateQueue, MyQueues, JoinQueue } from "./screens";
+import { BrowserRouter, Route, Routes, } from 'react-router-dom';
+import './assets/styles/header.css'
+import './assets/styles/index.css'
 function App() {
+  const isLoggedIn = localStorage.getItem('isSignedIn')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Header />
+        {!isLoggedIn &&
+          <Routes>
+            <Route exact path="/" element={<Landing />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        }
+        {isLoggedIn &&
+          <Routes>
+            <Route exact path="/" element={<Landing />} />
+            <Route path="/queue/create" element={<CreateQueue />} />
+            <Route path="/queue/join" element={<JoinQueue />} />
+            <Route path="/queue/created" element={<MyQueues />} />
+          </Routes>
+        }
+
+      </BrowserRouter>
+
     </div>
   );
 }
