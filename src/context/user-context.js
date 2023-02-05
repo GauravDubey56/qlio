@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-
 const UserContext = createContext({
     userId: "",
     username: "",
@@ -8,7 +7,10 @@ const UserContext = createContext({
     setUserId: (id) => { } ,
     setAcccesstoken: (token) => { },
     setRefreshtoken: (token) => { },
-    logout: () => { },
+    logout: () => {
+        localStorage.clear();
+        window.location.reload(true);
+     },
     setUsername: (username) => { },
     isLoggedIn: () => false,
 });

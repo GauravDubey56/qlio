@@ -15,11 +15,11 @@ function Header() {
     const handleLogout = async () => {
         userCtx.logout();
         const payload = { refreshToken }
-        const res = await axios.post(server + '/auth/logout', payload);
-        if (res.status === 200) {
-            navigate('../home')
-            window.location.reload(true);
-        }
+        // const res = await axios.post(server + '/auth/logout', payload);
+        // if (res.status === 200) {
+        //     navigate('../home')
+        //     window.location.reload(true);
+        // }
 
     }
     return (

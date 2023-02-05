@@ -1,4 +1,4 @@
-const server = "http://localhost:8000/v1"
+const server = "https://queuelio.vercel.app/api"
 const accessToken = () => {
     const token = localStorage.getItem('accessToken')
     const config = {headers : {Authorization : `Bearer ${token}`}};
